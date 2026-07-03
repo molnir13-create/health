@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Health Report</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#0f0f13;color:#e8e8f0;line-height:1.65}
+.hero{background:linear-gradient(135deg,#0f0f13 0%,#1a1a2e 60%,#16213e 100%);padding:48px 24px;text-align:center;border-bottom:1px solid #ffffff10}
+h1{font-size:32px;font-weight:800;color:#fff}
+.hero-sub{font-size:14px;color:#6666aa;margin-top:8px}
+.container{max-width:1000px;margin:0 auto;padding:40px 20px}
+.section{margin-bottom:52px}
+.sec-header{display:flex;align-items:center;gap:14px;margin-bottom:24px}
+.sec-num{width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;flex-shrink:0}
+.sec-title{font-size:20px;font-weight:700;color:#fff}
+.sec-sub{font-size:12px;color:#6666aa;margin-top:2px}
+.cards{display:grid;gap:16px}.cards-3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.card{background:#16161f;border:1px solid #ffffff0d;border-radius:16px;padding:24px}
+.card-green{border-color:#22c55e30;background:#22c55e08}.card-blue{border-color:#3b82f630;background:#3b82f608}.card-yellow{border-color:#f59e0b30;background:#f59e0b08}
+.card h3{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#6666aa;margin-bottom:10px;font-weight:700}
+.card .big{font-size:32px;font-weight:800;color:#fff;line-height:1}.card .small{font-size:13px;color:#aaaacc;margin-top:8px}
+.data-table{width:100%;border-collapse:collapse;font-size:13px}
+.data-table th{background:#1a1a2e;color:#6666aa;font-size:10px;text-transform:uppercase;letter-spacing:1px;padding:10px 14px;text-align:left}
+.data-table td{padding:10px 14px;border-bottom:1px solid #ffffff08;color:#ccccdd}
+.data-table tr:last-child td{border:none}
+.table-wrap{background:#16161f;border:1px solid #ffffff0d;border-radius:14px;overflow:hidden}
+.divider{height:1px;background:linear-gradient(90deg,transparent,#ffffff0d,transparent);margin:40px 0}
+@media(max-width:600px){.cards-3{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="hero">
+  <h1>Health Report</h1>
+  <p class="hero-sub">Автоматический отчёт — обновляется еженедельно и ежедневно</p>
+</div>
+<div class="container">
+
+<!-- WEEKLY PROGRESS -->
+<div class="section">
+  <div class="sec-header">
+    <div class="sec-num" style="background:linear-gradient(135deg,#0891b2,#0e7490)">W</div>
+    <div>
+      <div class="sec-title">Еженедельный прогресс</div>
+      <div class="sec-sub">Обновляется автоматически из Apple Health · последняя неделя сверху</div>
+    </div>
+  </div>
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead><tr>
+        <th>Неделя</th><th>Вес ср.</th><th>% Жира</th><th>Сон</th><th>Глуб. сон</th>
+        <th>Ночей &lt;7ч</th><th>Пульс ср.</th><th>Шагов/день</th><th>Актив. ккал</th>
+      </tr></thead>
+      <tbody>
+      <!-- WEEKLY:START -->
+        <tr><td colspan="9" style="color:#888">Данных пока нет</td></tr>
+      <!-- WEEKLY:END -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- NUTRITION -->
+<div class="section">
+  <div class="sec-header">
+    <div class="sec-num" style="background:linear-gradient(135deg,#22c55e,#16a34a)">К</div>
+    <div>
+      <div class="sec-title">Питание — план и факт</div>
+      <div class="sec-sub">Цель на день, факт по итогу дня и накопление за неделю</div>
+    </div>
+  </div>
+
+  <div class="cards cards-3" style="margin-bottom:20px">
+    <div class="card card-green"><h3>Дневная цель — калории</h3><div class="big">1850 <span style="font-size:14px;color:#6666aa">ккал</span></div><div class="small">Задаётся в config.json → targets</div></div>
+    <div class="card card-blue"><h3>Белки / Жиры / Углеводы</h3><div class="big" style="font-size:24px">140 / 60 / 185 <span style="font-size:13px;color:#6666aa">г</span></div><div class="small">Цель по макронутриентам</div></div>
+    <div class="card card-yellow"><h3>Цель</h3><div class="big" style="font-size:22px">Снижение веса</div><div class="small">Умеренный дефицит с сохранением мышц</div></div>
+  </div>
+
+  <!-- NUTRITION_WEEK:START -->
+  <div style="background:#1a1a2e;border-radius:12px;padding:16px 20px;font-size:13px;color:#8888aa;border:1px solid #ffffff0d;margin-bottom:16px">Данных за неделю пока нет — начни присылать фото еды боту.</div>
+  <!-- NUTRITION_WEEK:END -->
+
+  <div class="table-wrap">
+    <table class="data-table">
+      <thead><tr>
+        <th>Дата</th><th>Калории</th><th>vs цель</th><th>Белки</th><th>Жиры</th><th>Углеводы</th><th>Приёмов</th>
+      </tr></thead>
+      <tbody>
+      <!-- NUTRITION_DAYS:START -->
+        <tr><td colspan="7" style="color:#888">Записей пока нет</td></tr>
+      <!-- NUTRITION_DAYS:END -->
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div>
+</body>
+</html>
