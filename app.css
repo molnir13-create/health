@@ -15,10 +15,54 @@
   --warn: #fbbf24;
   --bad: #fb7185;
   --info: #60a5fa;
+  --text-strong: #ffffff;
+  --tabbar-bg: rgba(14, 14, 18, 0.72);
   --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 48px;
 }
 
-body { padding-bottom: calc(52px + env(safe-area-inset-bottom, 0px)); }
+/* ============================ LIGHT THEME ============================
+   The report's own inline <style> hard-codes dark colours and loads after this
+   file, so light overrides carry !important to win. Dark is the default (no attr). */
+html[data-theme="light"] {
+  --bg: #f3f4f7; --surface: #ffffff; --surface-2: #eceef2;
+  --line: #0000001a; --line-soft: #00000010;
+  --text: #1b1b28; --text-2: #55556e; --text-3: #8b8ba2;
+  --accent: #0891b2; --accent-dim: #0e7490;
+  --good: #16a34a; --warn: #d97706; --bad: #e11d48; --info: #2563eb;
+  --text-strong: #12121c;
+  --tabbar-bg: rgba(255, 255, 255, 0.82);
+}
+html[data-theme="light"] body { background: var(--bg) !important; color: var(--text) !important; }
+html[data-theme="light"] .hero {
+  background: linear-gradient(135deg, #ffffff 0%, #eaf2fb 60%, #e2ecfa 100%) !important;
+  border-bottom: 1px solid #00000012 !important;
+}
+html[data-theme="light"] h1,
+html[data-theme="light"] .sec-title,
+html[data-theme="light"] .card .big,
+html[data-theme="light"] .tile .kpi { color: var(--text-strong) !important; }
+html[data-theme="light"] .hero-sub,
+html[data-theme="light"] .sec-sub,
+html[data-theme="light"] .card h3 { color: var(--text-3) !important; }
+html[data-theme="light"] .card,
+html[data-theme="light"] .table-wrap { background: var(--surface) !important; border-color: var(--line) !important; }
+html[data-theme="light"] .card .small { color: var(--text-2) !important; }
+html[data-theme="light"] .data-table th { background: var(--surface-2) !important; color: var(--text-3) !important; }
+html[data-theme="light"] .data-table td { color: var(--text) !important; border-bottom-color: var(--line-soft) !important; }
+
+/* ---- theme toggle (floating, top-right) ---- */
+.theme-toggle {
+  position: fixed; top: calc(env(safe-area-inset-top, 0px) + 12px); right: 14px;
+  width: 40px; height: 40px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 19px; line-height: 1; cursor: pointer;
+  background: var(--surface); border: 1px solid var(--line); color: var(--text);
+  box-shadow: 0 4px 14px #0000002e; -webkit-tap-highlight-color: transparent;
+  z-index: 1100; transition: transform .12s ease;
+}
+.theme-toggle:active { transform: scale(.9); }
+
+body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
 
 .screen { animation: scr .18s ease; }
 @keyframes scr { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
@@ -27,10 +71,10 @@ body { padding-bottom: calc(52px + env(safe-area-inset-bottom, 0px)); }
 /* ---- bottom tab bar ---- */
 .tabbar {
   position: fixed; left: 0; right: 0; bottom: 0;
-  height: 52px;
+  height: 60px;
   display: flex; justify-content: space-around; align-items: stretch;
-  padding-bottom: env(safe-area-inset-bottom, 0px);
-  background: rgba(14, 14, 18, 0.72);
+  padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 10px);   /* lift icons off the home bar */
+  background: var(--tabbar-bg);
   backdrop-filter: saturate(160%) blur(24px);
   -webkit-backdrop-filter: saturate(160%) blur(24px);
   border-top: 1px solid var(--line);
@@ -52,7 +96,7 @@ body { padding-bottom: calc(52px + env(safe-area-inset-bottom, 0px)); }
   opacity: 0; transform: scaleX(.3);
   transition: opacity .2s ease, transform .2s cubic-bezier(.2, .8, .2, 1);
 }
-.tab-i { font-size: 20px; line-height: 1; opacity: .55; filter: grayscale(.35); transition: all .15s ease; }
+.tab-i { font-size: 24px; line-height: 1; opacity: .7; filter: grayscale(.2); transition: all .15s ease; }
 .tab-l { font-size: 10px; font-weight: 700; letter-spacing: .3px; }
 .tab.active { color: var(--accent); }
 .tab.active::before { opacity: 1; transform: scaleX(1); }

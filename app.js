@@ -6,12 +6,18 @@
   "use strict";
 
   var SCREENS = [
-    { id: "obzor",    icon: "🏠", label: "Обзор" },
-    { id: "pitanie",  icon: "🍽", label: "Питание" },
-    { id: "vosst",    icon: "😴", label: "Восст." },
-    { id: "analizy",  icon: "🔬", label: "Анализы" },
+    { id: "obzor",    icon: "🧭", label: "Обзор" },
+    { id: "pitanie",  icon: "🥗", label: "Питание" },
+    { id: "vosst",    icon: "🌙", label: "Восст." },
+    { id: "analizy",  icon: "🩸", label: "Анализы" },
     { id: "protokol", icon: "💊", label: "Протокол" }
   ];
+
+  // ---- theme (light / dark), applied before paint to avoid a flash ----
+  var THEME_KEY = "health-theme";
+  function currentTheme() { try { return localStorage.getItem(THEME_KEY) || "dark"; } catch (e) { return "dark"; } }
+  function applyTheme(t) { document.documentElement.setAttribute("data-theme", t); }
+  applyTheme(currentTheme());
 
   // A boundary comment → the screen everything after it belongs to (until the next boundary).
   function screenFor(c) {
@@ -107,6 +113,19 @@
       nav.appendChild(b);
     });
     document.body.appendChild(nav);
+
+    // theme toggle (floating, top-right)
+    var toggle = document.createElement("button");
+    toggle.className = "theme-toggle";
+    toggle.setAttribute("aria-label", "Сменить тему");
+    function paintToggle() { toggle.textContent = currentTheme() === "light" ? "🌙" : "☀️"; }
+    paintToggle();
+    toggle.addEventListener("click", function () {
+      var next = currentTheme() === "light" ? "dark" : "light";
+      try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+      applyTheme(next); paintToggle();
+    });
+    document.body.appendChild(toggle);
 
     function show(id) {
       SCREENS.forEach(function (s) {
