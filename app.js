@@ -27,6 +27,7 @@
     if (c.indexOf("КЛЮЧЕВЫЕ НАХОДКИ") >= 0)   return "obzor";
     if (c.indexOf("АНАЛИЗ ПО МЕСЯЦАМ") >= 0)   return "vosst";
     if (c.indexOf("ЕЖЕНЕДЕЛЬНЫЙ") >= 0)        return "vosst";
+    if (c.indexOf("WEEKLY PROGRESS") >= 0)     return "vosst";
     if (c.indexOf("2c. ПИТАНИЕ") >= 0)         return "pitanie";
     if (c.indexOf("3. СОН") >= 0)              return "vosst";
     if (c.indexOf("ТРЕНИРОВОЧНЫЙ") >= 0)       return "vosst";
