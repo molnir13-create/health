@@ -68,9 +68,27 @@
 
     // Overview bento: KPI tiles built from the .ovkpi blobs emitted by the chart generators
     var blobs = Array.prototype.slice.call(document.querySelectorAll(".ovkpi"));
+    // Body Battery hero replaces the old "Health Report" title at the top of Overview.
+    var heroEl = document.querySelector(".hero");
+    var HC = { good: "#16C784", warn: "#FFC93C", bad: "#FF4D5E", info: "#34B3F1", muted: "#8a8aa0" };
     if (blobs.length) {
-      var tiles = blobs.map(function (b) { try { return JSON.parse(b.textContent); } catch (e) { return null; } })
-                       .filter(Boolean).sort(function (a, b) { return (a.order || 9) - (b.order || 9); });
+      var all = blobs.map(function (b) { try { return JSON.parse(b.textContent); } catch (e) { return null; } })
+                     .filter(Boolean).sort(function (a, b) { return (a.order || 9) - (b.order || 9); });
+      var heroTile = null, tiles = [];
+      all.forEach(function (t) { if (t.hero && !heroTile) heroTile = t; else tiles.push(t); });
+      if (heroEl) {
+        if (heroTile) {
+          heroEl.innerHTML =
+            '<div class="hero-bb-lbl">' + (heroTile.icon || "") + " " + heroTile.label + "</div>" +
+            '<div class="hero-bb-val" style="color:' + (HC[heroTile.color] || "#fff") + '">' +
+              heroTile.value + '<span>' + (heroTile.unit || "") + "</span></div>" +
+            (heroTile.sub ? '<div class="hero-bb-sub">' + heroTile.sub + "</div>" : "");
+        } else {
+          heroEl.innerHTML = "";
+        }
+        heroEl.addEventListener("click", function () { show("vosst"); });
+        heroEl.style.cursor = "pointer";
+      }
       var grid = document.createElement("div");
       grid.className = "bento";
       tiles.forEach(function (t) {

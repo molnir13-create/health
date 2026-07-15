@@ -64,6 +64,12 @@ html[data-theme="light"] .data-table td { color: var(--text) !important; border-
 
 body { padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)); }
 
+/* ---- Body Battery hero (Overview top) ---- */
+.hero-bb-lbl { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: #8a8aa0; font-weight: 700; }
+.hero-bb-val { font-size: 64px; font-weight: 800; line-height: 1; margin-top: 8px; }
+.hero-bb-val span { font-size: 22px; color: #8a8aa0; font-weight: 600; margin-left: 2px; }
+.hero-bb-sub { font-size: 14px; color: #8a8aa0; margin-top: 10px; }
+
 .screen { animation: scr .18s ease; }
 @keyframes scr { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: none; } }
 @media (prefers-reduced-motion: reduce) { .screen { animation: none; } }
