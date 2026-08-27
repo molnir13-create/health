@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Здоровье</title>
-<meta name="generated" content="2026-08-27T15:41">
+<meta name="generated" content="2026-08-27T15:42">
 <link rel="manifest" href="manifest.webmanifest">
 <meta name="theme-color" content="#0891b2">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -51,7 +51,7 @@ h1{font-size:32px;font-weight:800;color:#fff}
 
   <!-- HERO_SUB:START -->
   <h1 class="sr-only">Сводка здоровья · 01.08–27.08.2026</h1>
-  <span class="appbar-when">Данные на 27.08, 15:41</span>
+  <span class="appbar-when">Данные на 27.08, 15:42</span>
   <!-- HERO_SUB:END -->
   <!-- SCORECARDS:START -->
     <div class="score-card">
@@ -626,7 +626,7 @@ h1{font-size:32px;font-weight:800;color:#fff}
   </div>
   <!-- TARGETS:END -->
 <!-- NUTRITION_WEEK:START -->
-        <div style="background:#22c55e10;border:1px solid #22c55e30;border-radius:12px;padding:16px 20px;margin-bottom:16px"><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#6666aa;margin-bottom:8px">Накопительно за неделю · 24.08–30.08 · дней с данными: 1/7</div><div style="display:flex;flex-wrap:wrap;gap:24px;font-size:14px;color:#ccccdd"><div><span style="color:#8888aa">Сумма</span> <strong style="color:#fff">1060</strong> / 1900 ккал (<span style="color:#e94560">на 840 ниже плана</span>)</div><div><span style="color:#8888aa">Среднее/день</span> <strong style="color:#e94560">1060</strong> / 1900 ккал</div><div><span style="color:#8888aa">Б/Ж/У ср.</span> <strong style="color:#fff">34/50/115</strong> г</div></div></div>
+        <div style="background:#22c55e10;border:1px solid #22c55e30;border-radius:12px;padding:16px 20px;margin-bottom:16px"><div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#6666aa;margin-bottom:8px">Накопительно за неделю · 24.08–30.08 · дней с данными: 1/7</div><div style="display:flex;flex-wrap:wrap;gap:24px;font-size:14px;color:#ccccdd"><div><span style="color:#8888aa">Сумма</span> <strong style="color:#fff">1310</strong> / 1900 ккал (<span style="color:#e94560">на 590 ниже плана</span>)</div><div><span style="color:#8888aa">Среднее/день</span> <strong style="color:#e94560">1310</strong> / 1900 ккал</div><div><span style="color:#8888aa">Б/Ж/У ср.</span> <strong style="color:#fff">96/43/142</strong> г</div></div></div>
       <!-- NUTRITION_WEEK:END -->
 
   <div class="table-wrap">
@@ -636,7 +636,7 @@ h1{font-size:32px;font-weight:800;color:#fff}
       </tr></thead>
       <tbody>
       <!-- NUTRITION_DAYS:START -->
-        <tr><td><strong style="color:#fff">27.08</strong></td><td style="color:#e94560">1060 / 1900</td><td style="color:#e94560">−840</td><td style="color:#e94560">34 / 140</td><td>50 ≤65</td><td>115</td><td>1</td></tr>
+        <tr><td><strong style="color:#fff">27.08</strong></td><td style="color:#e94560">1310 / 1900</td><td style="color:#e94560">−590</td><td style="color:#e94560">96 / 140</td><td>43 ≤65</td><td>142</td><td>1</td></tr>
         <tr><td><strong style="color:#fff">15.07</strong></td><td style="color:#e94560">45 / 1900</td><td style="color:#e94560">−1855</td><td style="color:#e94560">2 / 140</td><td>0 ≤65</td><td>8</td><td>1</td></tr>
       <!-- NUTRITION_DAYS:END -->
       </tbody>
@@ -689,13 +689,54 @@ h1{font-size:32px;font-weight:800;color:#fff}
 <!-- 8. ДОБАВКИ -->
   <!-- ПРИОРИТЕТНЫЙ ПЛАН -->
   <!-- PLAN:START -->
-  <!-- PLAN:END -->
+        <div class="sec-sub" style="margin:-8px 0 16px">2 действий в порядке важности · собрано из стека и анализов от 04.07.2026</div>
+  <div class="priority-grid">
+    <div class="prio-item">
+      <div class="prio-num" style="background:#e9456020;color:#e94560;border:1px solid #e9456040">1</div>
+      <div class="prio-text">
+        <strong>Без читаемого исхода 4 из 6 добавок: Хелинорм, Омакор, Белковая сыворотка Солгар, Убихинол. У этих позиций в протоколе нет `watch`</strong>
+        <span>маркера и цели, по которым видно, оправдывают ли они место. Это не повод отменять: это повод спросить врача, чем каждая из них должна себя показать, и вписать это в протокол. Правится самостоятельно, без врача.</span>
+      </div>
+      <div class="prio-impact" style="background:#e9456020;color:#e94560">Срочно</div>
+    </div>
+    <div class="prio-item">
+      <div class="prio-num" style="background:#e9456020;color:#e94560;border:1px solid #e9456040">2</div>
+      <div class="prio-text">
+        <strong>Без даты начала 9 из 9 позиций</strong>
+        <span>. Пока её нет, ни одна позиция не может быть сопоставлена с квартальным забором: вопрос «что изменилось с начала приёма» не имеет данных. Поле `since` в ~/.protocol.json, формат ГГГГ-ММ-ДД. Правится самостоятельно, без врача.</span>
+      </div>
+      <div class="prio-impact" style="background:#e9456020;color:#e94560">Срочно</div>
+    </div>
+  </div>
+      <!-- PLAN:END -->
 <!-- PROTOCOL:START -->
-        <div class="alert alert-green">
+        <div style="font-size:11px;text-transform:uppercase;letter-spacing:1px;color:#6666aa;font-weight:700;margin-bottom:10px;padding-left:4px">✅ Уже принимается — 9 позиций</div>
+
+  <div class="table-wrap" style="margin-bottom:24px">
+    <table class="data-table">
+      <caption class="sr-only">Что принимается сейчас: доза, время приёма, класс и комментарий по каждой позиции</caption>
+      <thead><tr><th>Позиция</th><th>Доза / Время</th><th>Класс</th><th>Комментарий</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Аденурик</strong></td><td>80 мг утром, с едой</td><td><span class="rec-tag tag-blue">Клиническое</span></td><td>гиперурикемия, риск подагры/МКБ; 3 мес <span style="color:#6666aa">· контроль: Мочевая кислота в сыворотке</span></td></tr>
+        <tr><td><strong>Ребагит</strong></td><td>100 мг ×3/день днём, с едой</td><td><span class="rec-tag tag-blue">Клиническое</span></td><td>гастропротектор, обострение гастрита; курс 1 мес ×4/год</td></tr>
+        <tr><td><strong>Урсосан форте</strong></td><td>500 мг на ночь</td><td><span class="rec-tag tag-blue">Клиническое</span></td><td>ДЖП, дисформия желчного пузыря; курс 1 мес ×4/год</td></tr>
+        <tr><td><strong>Белковая сыворотка Солгар</strong></td><td>1 мерная ложка днём</td><td><span class="rec-tag tag-green">Добавка</span></td><td>белок, длительно</td></tr>
+        <tr><td><strong>Витамин D3 + K2</strong></td><td>5000 МЕ D3 + 100 мкг K2 утром, с едой</td><td><span class="rec-tag tag-green">Добавка</span></td><td>витамин D, длительно <span style="color:#6666aa">· контроль: Витамин Д (25-OH) (30–60)</span></td></tr>
+        <tr><td><strong>Железо Солгар (легкодоступное)</strong></td><td>1 капс утром, с едой</td><td><span class="rec-tag tag-green">Добавка</span></td><td>латентная ферропения, до 3 мес <span style="color:#6666aa">· контроль: Ферритин (20–250)</span></td></tr>
+        <tr><td><strong>Омакор (Омега-3 ПНЖК)</strong></td><td>1000 мг ×2/день днём, с едой</td><td><span class="rec-tag tag-green">Добавка</span></td><td>омега-3, постоянно</td></tr>
+        <tr><td><strong>Убихинол (Коэнзим Q10) Солгар</strong></td><td>100 мг утром, с едой</td><td><span class="rec-tag tag-green">Добавка</span></td><td>CoQ10, 3 мес</td></tr>
+        <tr><td><strong>Хелинорм</strong></td><td>1 капс ×2/день днём, с едой</td><td><span class="rec-tag tag-green">Добавка</span></td><td>H. pylori-адъювант; курс 1 мес ×4/год</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="alert alert-green">
     <div class="alert-icon">🔬</div>
     <div class="alert-body">
       <strong>Коррекции по анализам от 04.07.2026 — сверка стека с фармой</strong>
-      <p>✓ «Железо Солгар (легкодоступное)» 1 капс держит Ферритин на 141.2 нг/мл — в целевом коридоре 20–250, доза адекватна.</p>
+      <p>• Без читаемого исхода 4 из 6 добавок: Хелинорм, Омакор, Белковая сыворотка Солгар, Убихинол. У этих позиций в протоколе нет `watch` — маркера и цели, по которым видно, оправдывают ли они место. Это не повод отменять: это повод спросить врача, чем каждая из них должна себя показать, и вписать это в протокол.<br>
+      • Без даты начала 9 из 9 позиций. Пока её нет, ни одна позиция не может быть сопоставлена с квартальным забором: вопрос «что изменилось с начала приёма» не имеет данных. Поле `since` в ~/.protocol.json, формат ГГГГ-ММ-ДД.<br>
+      ✓ «Железо Солгар (легкодоступное)» 1 капс держит Ферритин на 141.2 нг/мл — в целевом коридоре 20–250, доза адекватна.</p>
     </div>
   </div>
       <!-- PROTOCOL:END -->
