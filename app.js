@@ -66,6 +66,10 @@
     });
     SCREENS.forEach(function (s) { container.appendChild(screens[s.id]); });
 
+    // Фраза для озвучки собирается из тех же плиток, что и бенто: генераторы уже положили
+    // в страницу структурированные показатели, второй источник заводить незачем.
+    var spokenSummary = "";
+
     // Overview bento: KPI tiles built from the .ovkpi blobs emitted by the chart generators
     var blobs = Array.prototype.slice.call(document.querySelectorAll(".ovkpi"));
     // Body Battery hero replaces the old "Health Report" title at the top of Overview.
@@ -74,6 +78,11 @@
     if (blobs.length) {
       var all = blobs.map(function (b) { try { return JSON.parse(b.textContent); } catch (e) { return null; } })
                      .filter(Boolean).sort(function (a, b) { return (a.order || 9) - (b.order || 9); });
+      spokenSummary = all.map(function (t) {
+        var v = String(t.value === undefined ? "" : t.value).trim();
+        var u = (t.unit || "").replace(/^\//, " из ");   // «/1900» читается как «из 1900»
+        return [t.label, v + u, t.sub || ""].filter(Boolean).join(", ");
+      }).join(". ");
       var heroTile = null, tiles = [];
       all.forEach(function (t) { if (t.hero && !heroTile) heroTile = t; else tiles.push(t); });
       if (heroEl) {
@@ -132,6 +141,38 @@
       nav.appendChild(b);
     });
     document.body.appendChild(nav);
+
+    // Озвучка сводки прямо в браузере: speechSynthesis встроен в Safari, сервер не нужен.
+    // iOS требует, чтобы речь начиналась из жеста пользователя — поэтому только по нажатию.
+    var speakBtn = document.createElement("button");
+    speakBtn.className = "speak-toggle";
+    speakBtn.setAttribute("aria-label", "Прочитать сводку вслух");
+    speakBtn.textContent = "🔊";
+    var synth = window.speechSynthesis;
+    if (!synth) {
+      speakBtn.style.display = "none";              // старый браузер — кнопки просто нет
+    }
+    function stopSpeaking() {
+      if (synth) { synth.cancel(); }
+      speakBtn.textContent = "🔊";
+      speakBtn.classList.remove("on");
+    }
+    speakBtn.addEventListener("click", function () {
+      if (!synth) { return; }
+      if (synth.speaking || synth.pending) { stopSpeaking(); return; }
+      var text = spokenSummary || "Сводка ещё не собрана.";
+      var u = new SpeechSynthesisUtterance(text);
+      u.lang = "ru-RU";
+      u.rate = 1.0;
+      var ru = (synth.getVoices() || []).filter(function (v) { return /^ru/i.test(v.lang); });
+      if (ru.length) { u.voice = ru[0]; }
+      u.onend = stopSpeaking;
+      u.onerror = stopSpeaking;
+      speakBtn.textContent = "⏹";
+      speakBtn.classList.add("on");
+      synth.speak(u);
+    });
+    document.body.appendChild(speakBtn);
 
     // theme toggle (floating, top-right)
     var toggle = document.createElement("button");
